@@ -1,0 +1,20 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>麻雀</title>
+</head>
+<body background="back.jpg">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="main.js"></script>
+<font color="white">
+<h1>麻雀</h1>
+<p id="junme">1順目</p>
+<p id="yama">残り120枚</p>
+<div id="dora">ドラ表示牌</div>
+<div id="kawa"></div>
+<br><br>
+<div id="view" style="position:absolute;bottom:200px;"></div>
+<div id="message" style="position:absolute;bottom:150px;">></div>
+</font>
+</body>
+</html>

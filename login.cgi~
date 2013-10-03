@@ -1,0 +1,44 @@
+#!/usr/bin/python
+
+import sys
+import cgi
+import cgitb
+cgitb.enable()
+
+sys.stderr = sys.stdout
+
+form = cgi.FieldStorage()
+form_dict = {}
+  
+print "Content-type: text/html"
+print ""
+
+# For each key
+for key in form.keys():
+    try:
+        form_dict[key] = "'" + form[key].value + "'"
+    except:
+        pass
+
+#print form_dict
+
+import MySQLdb
+
+connector = MySQLdb.connect(host="localhost", db="ateam", user="ateam", passwd="ateam", charset="utf8")
+cursor = connector.cursor(MySQLdb.cursors.DictCursor)
+
+
+if form_dict.has_key("user_name") and form_dict.has_key("password"):
+    sql = "select user_id from user where user_name=" + form_dict["user_name"] + " and password=" + form_dict["password"]
+
+    cursor.execute(sql)
+
+    try:
+        print cursor.fetchone()["user_id"],
+    except:
+        print "None",
+else:
+    print "None",
+
+cursor.close()
+connector.close()
